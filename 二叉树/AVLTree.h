@@ -56,3 +56,4 @@ private:
 	void bulidTree(UserInfo *T, int deep);
 	int count = 0;
 };
+ 
