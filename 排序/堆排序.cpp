@@ -1,31 +1,31 @@
-//µÚÒ»´ÎÊµÏÖ¶ÑÅÅĞò£¬ËùÒÔĞ´ÁËÒ»Ğ©×¢ÊÍÒÔ¼°ÊµÀı
+//ç¬¬ä¸€æ¬¡å®ç°å †æ’åºï¼Œæ‰€ä»¥å†™äº†ä¸€äº›æ³¨é‡Šä»¥åŠå®ä¾‹
 #include <time.h>
 #include <iostream>
 #include <vector>
 using namespace std;
 void MinHeapify(vector<int> &arry, int size, int element)
 {
-	int lchild = element * 2 + 1, rchild = lchild + 1;//×óÓÒ×ÓÊ÷
-	while (rchild < size)//×ÓÊ÷¾ùÔÚ·¶Î§ÄÚ
+	int lchild = element * 2 + 1, rchild = lchild + 1;//å·¦å³å­æ ‘
+	while (rchild < size)//å­æ ‘å‡åœ¨èŒƒå›´å†…
 	{
-		if (arry[element] <= arry[lchild] && arry[element] <= arry[rchild])//Èç¹û±È×óÓÒ×ÓÊ÷¶¼Ğ¡£¬Íê³ÉÕûÀí
+		if (arry[element] <= arry[lchild] && arry[element] <= arry[rchild])//å¦‚æœæ¯”å·¦å³å­æ ‘éƒ½å°ï¼Œå®Œæˆæ•´ç†
 		{
 			return;
 		}
-		if (arry[lchild] <= arry[rchild])//Èç¹û×ó±ß×îĞ¡
+		if (arry[lchild] <= arry[rchild])//å¦‚æœå·¦è¾¹æœ€å°
 		{
-			swap(arry[element], arry[lchild]);//°Ñ×óÃæµÄÌáµ½ÉÏÃæ
-			element = lchild;//Ñ­»·Ê±ÕûÀí×ÓÊ÷
+			swap(arry[element], arry[lchild]);//æŠŠå·¦é¢çš„æåˆ°ä¸Šé¢
+			element = lchild;//å¾ªç¯æ—¶æ•´ç†å­æ ‘
 		}
-		else//·ñÔòÓÒÃæ×îĞ¡
+		else//å¦åˆ™å³é¢æœ€å°
 		{
-			swap(arry[element], arry[rchild]);//Í¬Àí
+			swap(arry[element], arry[rchild]);//åŒç†
 			element = rchild;
 		}
 		lchild = element * 2 + 1;
-		rchild = lchild + 1;//ÖØĞÂ¼ÆËã×ÓÊ÷Î»ÖÃ
+		rchild = lchild + 1;//é‡æ–°è®¡ç®—å­æ ‘ä½ç½®
 	}
-	if (lchild < size&&arry[lchild] < arry[element])//Ö»ÓĞ×ó×ÓÊ÷ÇÒ×ÓÊ÷Ğ¡ÓÚ×Ô¼º
+	if (lchild < size&&arry[lchild] < arry[element])//åªæœ‰å·¦å­æ ‘ä¸”å­æ ‘å°äºè‡ªå·±
 	{
 		swap(arry[lchild], arry[element]);
 	}
@@ -35,15 +35,15 @@ void MinHeapify(vector<int> &arry, int size, int element)
 void HeapSort(vector<int> &arry, int size)
 {
 	int i;
-	for (i = size - 1; i >= 0; i--)//´Ó×ÓÊ÷¿ªÊ¼ÕûÀíÊ÷
+	for (i = size - 1; i >= 0; i--)//ä»å­æ ‘å¼€å§‹æ•´ç†æ ‘
 	{
 		MinHeapify(arry, size, i);
 	}
-	while (size > 0)//²ğ³ıÊ÷
+	while (size > 0)//æ‹†é™¤æ ‘
 	{
-		swap(arry[size - 1], arry[0]);//½«¸ù£¨×îĞ¡£©ÓëÊı×é×îÄ©½»»»
-		size--;//Ê÷´óĞ¡¼õĞ¡
-		MinHeapify(arry, size, 0);//ÕûÀíÊ÷
+		swap(arry[size - 1], arry[0]);//å°†æ ¹ï¼ˆæœ€å°ï¼‰ä¸æ•°ç»„æœ€æœ«äº¤æ¢
+		size--;//æ ‘å¤§å°å‡å°
+		MinHeapify(arry, size, 0);//æ•´ç†æ ‘
 	}
 	return;
 }
