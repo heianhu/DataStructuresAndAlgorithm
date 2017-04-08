@@ -4,25 +4,25 @@
 using namespace std;
 struct cmp1 {
 	bool operator ()(int &a, int &b) {
-		return a > b;//×îĞ¡ÖµÓÅÏÈ  
+		return a > b;//æœ€å°å€¼ä¼˜å…ˆ  
 	}
 };
 struct cmp2 {
 	bool operator ()(int &a, int &b) {
-		return a < b;//×î´óÖµÓÅÏÈ  
+		return a < b;//æœ€å¤§å€¼ä¼˜å…ˆ  
 	}
 };
-//¶¨Òå½á¹¹£¬Ê¹ÓÃÔËËã·ûÖØÔØ,×Ô¶¨ÒåÓÅÏÈ¼¶2  
+//å®šä¹‰ç»“æ„ï¼Œä½¿ç”¨è¿ç®—ç¬¦é‡è½½,è‡ªå®šä¹‰ä¼˜å…ˆçº§2  
 struct number1 {
 	int x;
 	bool operator < (const number1 &a) const {
-		return x > a.x;//×îĞ¡ÖµÓÅÏÈ  
+		return x > a.x;//æœ€å°å€¼ä¼˜å…ˆ  
 	}
 };
 struct number2 {
 	int x;
 	bool operator < (const number2 &a) const {
-		return x < a.x;//×î´óÖµÓÅÏÈ  
+		return x < a.x;//æœ€å¤§å€¼ä¼˜å…ˆ  
 	}
 };
 int a[] = { 14,10,56,7,83,22,36,91,3,47,72,0 };
@@ -31,14 +31,14 @@ number2 num2[] = { 14,10,56,7,83,22,36,91,3,47,72,0 };
 
 int main()
 {
-	priority_queue<int>que;//²ÉÓÃÄ¬ÈÏÓÅÏÈ¼¶¹¹Ôì¶ÓÁĞ  
+	priority_queue<int>que;//é‡‡ç”¨é»˜è®¤ä¼˜å…ˆçº§æ„é€ é˜Ÿåˆ—  
 
-	priority_queue<int, vector<int>, cmp1>que1;//×îĞ¡ÖµÓÅÏÈ  
-	priority_queue<int, vector<int>, cmp2>que2;//×î´óÖµÓÅÏÈ  
+	priority_queue<int, vector<int>, cmp1>que1;//æœ€å°å€¼ä¼˜å…ˆ  
+	priority_queue<int, vector<int>, cmp2>que2;//æœ€å¤§å€¼ä¼˜å…ˆ  
 
-	priority_queue<int, vector<int>, greater<int> >que3;//×¢Òâ¡°>>¡±»á±»ÈÏÎª´íÎó£¬  
-														//ÕâÊÇÓÒÒÆÔËËã·û£¬ËùÒÔÕâÀïÓÃ¿Õ¸ñºÅ¸ô¿ª  
-	priority_queue<int, vector<int>, less<int> >que4;////×î´óÖµÓÅÏÈ  
+	priority_queue<int, vector<int>, greater<int> >que3;//æ³¨æ„â€œ>>â€ä¼šè¢«è®¤ä¸ºé”™è¯¯ï¼Œ  
+														//è¿™æ˜¯å³ç§»è¿ç®—ç¬¦ï¼Œæ‰€ä»¥è¿™é‡Œç”¨ç©ºæ ¼å·éš”å¼€  
+	priority_queue<int, vector<int>, less<int> >que4;////æœ€å¤§å€¼ä¼˜å…ˆ  
 
 	priority_queue<number1>que5;
 	priority_queue<number2>que6;
@@ -57,7 +57,7 @@ int main()
 		que6.push(num2[i]);
 
 
-	cout << "²ÉÓÃÄ¬ÈÏÓÅÏÈ¹ØÏµ:\n(priority_queue<int>que;)\n";
+	cout << "é‡‡ç”¨é»˜è®¤ä¼˜å…ˆå…³ç³»:\n(priority_queue<int>que;)\n";
 	while (!que.empty()) {
 		cout << que.top();
 		que.pop();
@@ -65,7 +65,7 @@ int main()
 	puts("");
 	puts("");
 
-	cout << "²ÉÓÃ½á¹¹Ìå×Ô¶¨ÒåÓÅÏÈ¼¶·½Ê½Ò»:\n(priority_queue<int,vector<int>,cmp>que;)\n";
+	cout << "é‡‡ç”¨ç»“æ„ä½“è‡ªå®šä¹‰ä¼˜å…ˆçº§æ–¹å¼ä¸€:\n(priority_queue<int,vector<int>,cmp>que;)\n";
 	while (!que1.empty()) {
 		cout << que1.top();
 		que1.pop();
@@ -77,7 +77,7 @@ int main()
 	}
 	puts("");
 	puts("");
-	cout << "²ÉÓÃÍ·ÎÄ¼ş\"functional\"ÄÚ¶¨ÒåÓÅÏÈ¼¶:\n(priority_queue<int,vector<int>,greater<int>/less<int> >que;)\n";
+	cout << "é‡‡ç”¨å¤´æ–‡ä»¶\"functional\"å†…å®šä¹‰ä¼˜å…ˆçº§:\n(priority_queue<int,vector<int>,greater<int>/less<int> >que;)\n";
 	while (!que3.empty()) {
 		cout << que3.top();
 		que3.pop();
@@ -89,7 +89,7 @@ int main()
 	}
 	puts("");
 	puts("");
-	cout << "²ÉÓÃ½á¹¹Ìå×Ô¶¨ÒåÓÅÏÈ¼¶·½Ê½¶ş:\n(priority_queue<number>que)\n";
+	cout << "é‡‡ç”¨ç»“æ„ä½“è‡ªå®šä¹‰ä¼˜å…ˆçº§æ–¹å¼äºŒ:\n(priority_queue<number>que)\n";
 	while (!que5.empty()) {
 		cout << que5.top().x;
 		que5.pop();
