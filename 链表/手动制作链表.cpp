@@ -1,47 +1,47 @@
 #include <iostream>
 using namespace std;
-struct student  //¶¨Òå×Ô¶¨ÒåÊı×éÀàĞÍ 
+struct student  //å®šä¹‰è‡ªå®šä¹‰æ•°ç»„ç±»å‹ 
 {
 	int num;
 	float score;
 	student *next;
 };
-int main(int argc, char** argv) //Ö÷º¯Êı 
+int main(int argc, char** argv) //ä¸»å‡½æ•° 
 {
-	student *creat(void);  //½¨Á¢Á´±í 
-	void print(student *head);  //Êä³öÁ´±í 
-	student *insert(student *head, student *stu);  //²åÈëÁ´±í½Úµã 
-	student *del(student *head, int num);  //É¾³ı½Úµã 
+	student *creat(void);  //å»ºç«‹é“¾è¡¨ 
+	void print(student *head);  //è¾“å‡ºé“¾è¡¨ 
+	student *insert(student *head, student *stu);  //æ’å…¥é“¾è¡¨èŠ‚ç‚¹ 
+	student *del(student *head, int num);  //åˆ é™¤èŠ‚ç‚¹ 
 	student *head, *stu;
 	int del_num, Features;
-	cout << "ÇëÊäÈëÁ´±í£º" << endl;
-	head = creat();  //ÊäÈëÁ´±í²¢ÇÒ·µ»ØÊ×µØÖ· 
-	print(head);  //Êä³öËùÓĞ½Úµã 
-	cout << endl << "ÇëÑ¡Ôñ¹¦ÄÜ£¬ÊäÈë0ÍË³ö³ÌĞò" << endl << "1:É¾³ıÑ§Éú" << endl << "2:²åÈëÑ§Éú" << endl;
+	cout << "è¯·è¾“å…¥é“¾è¡¨ï¼š" << endl;
+	head = creat();  //è¾“å…¥é“¾è¡¨å¹¶ä¸”è¿”å›é¦–åœ°å€ 
+	print(head);  //è¾“å‡ºæ‰€æœ‰èŠ‚ç‚¹ 
+	cout << endl << "è¯·é€‰æ‹©åŠŸèƒ½ï¼Œè¾“å…¥0é€€å‡ºç¨‹åº" << endl << "1:åˆ é™¤å­¦ç”Ÿ" << endl << "2:æ’å…¥å­¦ç”Ÿ" << endl;
 	while (cin >> Features)
 	{
 		if (Features == 1)
 		{
-			cout << "ÇëÊäÈëÒªÉ¾³ıµÄÑ§ÉúµÄÑ§ºÅ,ÊäÈë0Ê±ÍË³öÉ¾³ı";
+			cout << "è¯·è¾“å…¥è¦åˆ é™¤çš„å­¦ç”Ÿçš„å­¦å·,è¾“å…¥0æ—¶é€€å‡ºåˆ é™¤";
 			cin >> del_num;
 			while (del_num != 0)
 			{
 				head = del(head, del_num);
 				print(head);
-				cout << "ÇëÊäÈëÒªÉ¾³ıµÄÑ§ÉúµÄÑ§ºÅ,ÊäÈë0Ê±ÍË³öÉ¾³ı";
+				cout << "è¯·è¾“å…¥è¦åˆ é™¤çš„å­¦ç”Ÿçš„å­¦å·,è¾“å…¥0æ—¶é€€å‡ºåˆ é™¤";
 				cin >> del_num;
 			}
 		}
 		if (Features == 2)
 		{
-			cout << "ÇëÊäÈëÒª²åÈëµÄÑ§ÉúĞÅÏ¢(Ñ§ºÅºÍ·ÖÊı)£¬µ±Ñ§ºÅÎª0Ê±ÍË³ö²åÈë";
+			cout << "è¯·è¾“å…¥è¦æ’å…¥çš„å­¦ç”Ÿä¿¡æ¯(å­¦å·å’Œåˆ†æ•°)ï¼Œå½“å­¦å·ä¸º0æ—¶é€€å‡ºæ’å…¥";
 			stu = new student;
 			cin >> stu->num >> stu->score;
 			while (stu->num != 0)
 			{
 				head = insert(head, stu);
 				print(head);
-				cout << "ÇëÊäÈëÒª²åÈëµÄÑ§ÉúĞÅÏ¢(Ñ§ºÅºÍ·ÖÊı)£¬µ±Ñ§ºÅÎª0Ê±ÍË³ö²åÈë";
+				cout << "è¯·è¾“å…¥è¦æ’å…¥çš„å­¦ç”Ÿä¿¡æ¯(å­¦å·å’Œåˆ†æ•°)ï¼Œå½“å­¦å·ä¸º0æ—¶é€€å‡ºæ’å…¥";
 				stu = new student;
 				cin >> stu->num >> stu->score;
 			}
@@ -50,30 +50,30 @@ int main(int argc, char** argv) //Ö÷º¯Êı
 	}
 	return 0;
 }
-int n;  //¶¨ÒåÈ«¾Ö±äÁ¿n 
-student *creat(void)  //½¨Á¢Á´±íµÄº¯Êı£¬´Ëº¯Êı´ø»ØÒ»¸öÖ¸ÏòÁ´±íÍ·µÄÖ¸Õë 
+int n;  //å®šä¹‰å…¨å±€å˜é‡n 
+student *creat(void)  //å»ºç«‹é“¾è¡¨çš„å‡½æ•°ï¼Œæ­¤å‡½æ•°å¸¦å›ä¸€ä¸ªæŒ‡å‘é“¾è¡¨å¤´çš„æŒ‡é’ˆ 
 {
 	student *head, *p1, *p2;
 	n = 0;
-	p1 = p2 = new student;  //Ê¹p1,p2Ö¸ÏòÒ»¸öĞÂ¿ª±ÙµÄĞÂµ¥Ôª 
+	p1 = p2 = new student;  //ä½¿p1,p2æŒ‡å‘ä¸€ä¸ªæ–°å¼€è¾Ÿçš„æ–°å•å…ƒ 
 	cin >> p1->num >> p1->score;
 	head = NULL;
-	while (p1->num != 0)  //ÅĞ¶ÏÊÇ·ñ½áÊø 
+	while (p1->num != 0)  //åˆ¤æ–­æ˜¯å¦ç»“æŸ 
 	{
 		n++;
-		if (n == 1) head = p1;  //½«Í·µØÖ·¸³Öµ 
-		else p2->next = p1;   //ÖØµã* 
+		if (n == 1) head = p1;  //å°†å¤´åœ°å€èµ‹å€¼ 
+		else p2->next = p1;   //é‡ç‚¹* 
 		p2 = p1;
-		p1 = new student;  //*ÖØµã 
+		p1 = new student;  //*é‡ç‚¹ 
 		cin >> p1->num >> p1->score;
 	}
 	p2->next = NULL;
 	return (head);
 }
-void print(student *head)  //Êä³öÁ´±í 
+void print(student *head)  //è¾“å‡ºé“¾è¡¨ 
 {
 	student *p;
-	cout << endl << n << "¸öÑ§ÉúÎª£º" << endl;
+	cout << endl << n << "ä¸ªå­¦ç”Ÿä¸ºï¼š" << endl;
 	p = head;
 	if (head != NULL)
 		while (p != NULL)
@@ -82,7 +82,7 @@ void print(student *head)  //Êä³öÁ´±í
 			p = p->next;
 		}
 }
-student *insert(student *head, student *stu)  //²åÈëÁ´±í½Úµã 
+student *insert(student *head, student *stu)  //æ’å…¥é“¾è¡¨èŠ‚ç‚¹ 
 {
 	student *p0, *p1, *p2=NULL;
 	p1 = head;
@@ -114,12 +114,12 @@ student *insert(student *head, student *stu)  //²åÈëÁ´±í½Úµã
 	n = n + 1;
 	return (head);
 }
-student *del(student *head, int num)  //É¾³ıÁ´±íÖĞµÄÒ»¸ö½Úµã 
+student *del(student *head, int num)  //åˆ é™¤é“¾è¡¨ä¸­çš„ä¸€ä¸ªèŠ‚ç‚¹ 
 {
 	student *p1, *p2=NULL;
 	if (head == NULL)
 	{
-		cout << "Á´±íÎª¿Õ" << endl;
+		cout << "é“¾è¡¨ä¸ºç©º" << endl;
 		return (head);
 	}
 	p1 = head;
@@ -132,9 +132,9 @@ student *del(student *head, int num)  //É¾³ıÁ´±íÖĞµÄÒ»¸ö½Úµã
 	{
 		if (p1 == head) head = p1->next;
 		else p2->next = p1->next;
-		cout << "É¾³ı£º" << num << endl;
+		cout << "åˆ é™¤ï¼š" << num << endl;
 		n--;
 	}
-	else cout << "ÔÚÁ´±íÖĞÃ»ÓĞÕÒµ½" << num << endl;
+	else cout << "åœ¨é“¾è¡¨ä¸­æ²¡æœ‰æ‰¾åˆ°" << num << endl;
 	return (head);
 }
