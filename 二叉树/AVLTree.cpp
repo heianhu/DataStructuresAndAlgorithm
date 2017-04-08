@@ -27,30 +27,30 @@ void AVLTree::insert(string ID, string password)
 UserInfo * AVLTree::insert(UserInfo *& pnode, string ID, string password)
 {
 
-	if (pnode == NULL)	//Ñ°ÕÒµ½²åÈëµÄÎ»ÖÃ
+	if (pnode == NULL)	//å¯»æ‰¾åˆ°æ’å…¥çš„ä½ç½®
 	{
 		pnode = new UserInfo(ID, password, NULL, NULL);
 	}
-	else if (ID > pnode->getID())	//²åÈëÖµ±Èµ±Ç°½áµãÖµ´ó£¬²åÈëµ½µ±Ç°½áµãµÄÓÒ×ÓÊ÷ÉÏ
+	else if (ID > pnode->getID())	//æ’å…¥å€¼æ¯”å½“å‰ç»“ç‚¹å€¼å¤§ï¼Œæ’å…¥åˆ°å½“å‰ç»“ç‚¹çš„å³å­æ ‘ä¸Š
 	{
 		pnode->rchild = insert(pnode->rchild, ID, password);
-		if (height(pnode->rchild) - height(pnode->lchild) == 2) //²åÈëºó³öÏÖÊ§ºâ
+		if (height(pnode->rchild) - height(pnode->lchild) == 2) //æ’å…¥åå‡ºç°å¤±è¡¡
 		{
-			if (ID > pnode->rchild->getID()) //Çé¿öÒ»£º²åÈëÓÒ×ÓÊ÷µÄÓÒ½Úµã£¬½øĞĞ×óĞı
+			if (ID > pnode->rchild->getID()) //æƒ…å†µä¸€ï¼šæ’å…¥å³å­æ ‘çš„å³èŠ‚ç‚¹ï¼Œè¿›è¡Œå·¦æ—‹
 				pnode = leftRotation(pnode);
-			else if (ID < pnode->rchild->getID())  //Çé¿öÈı£º²åÈëÓÒ×ÓÊ÷µÄ×ó½Úµã,½øĞĞÏÈÓÒÔÙ×óĞı×ª
+			else if (ID < pnode->rchild->getID())  //æƒ…å†µä¸‰ï¼šæ’å…¥å³å­æ ‘çš„å·¦èŠ‚ç‚¹,è¿›è¡Œå…ˆå³å†å·¦æ—‹è½¬
 				pnode = rightLeftRotation(pnode);
 		}
 	}
-	else if (ID < pnode->getID()) //²åÈëÖµ±Èµ±Ç°½ÚµãÖµĞ¡£¬²åÈëµ½µ±Ç°½áµãµÄ×ó×ÓÊ÷ÉÏ
+	else if (ID < pnode->getID()) //æ’å…¥å€¼æ¯”å½“å‰èŠ‚ç‚¹å€¼å°ï¼Œæ’å…¥åˆ°å½“å‰ç»“ç‚¹çš„å·¦å­æ ‘ä¸Š
 	{
 		pnode->lchild = insert(pnode->lchild, ID, password);
-		if (height(pnode->lchild) - height(pnode->rchild) == 2) //Èç¹û²åÈëµ¼ÖÂÊ§ºâ
+		if (height(pnode->lchild) - height(pnode->rchild) == 2) //å¦‚æœæ’å…¥å¯¼è‡´å¤±è¡¡
 		{
-			if (ID < pnode->lchild->getID())		//Çé¿ö¶ş£º²åÈëµ½×ó×ÓÊ÷µÄ×óº¢×Ó½ÚµãÉÏ£¬½øĞĞÓÒĞı
+			if (ID < pnode->lchild->getID())		//æƒ…å†µäºŒï¼šæ’å…¥åˆ°å·¦å­æ ‘çš„å·¦å­©å­èŠ‚ç‚¹ä¸Šï¼Œè¿›è¡Œå³æ—‹
 				pnode = rightRotation(pnode);
 			else if (ID > pnode->lchild->getID())
-				pnode = leftRightRotation(pnode);//Çé¿öËÄ£º²åÈëµ½×ó×ÓÊ÷µÄÓÒº¢×Ó½ÚµãÉÏ£¬½øĞĞÏÈ×óºóÓÒĞı×ª
+				pnode = leftRightRotation(pnode);//æƒ…å†µå››ï¼šæ’å…¥åˆ°å·¦å­æ ‘çš„å³å­©å­èŠ‚ç‚¹ä¸Šï¼Œè¿›è¡Œå…ˆå·¦åå³æ—‹è½¬
 		}
 	}
 	pnode->setHeight(max(height(pnode->lchild), height(pnode->rchild)) + 1);
@@ -66,23 +66,23 @@ UserInfo * AVLTree::remove(UserInfo *& pnode, string ID)
 {
 	if (pnode != NULL)
 	{
-		if (ID == pnode->getID())			//ÕÒµ½É¾³ıµÄ½Úµã
+		if (ID == pnode->getID())			//æ‰¾åˆ°åˆ é™¤çš„èŠ‚ç‚¹
 		{
-			if (pnode->lchild != NULL&&pnode->rchild != NULL)		//Èô×óÓÒ¶¼²»Îª¿Õ
+			if (pnode->lchild != NULL&&pnode->rchild != NULL)		//è‹¥å·¦å³éƒ½ä¸ä¸ºç©º
 			{
-				if (height(pnode->lchild) > height(pnode->rchild))		//×ó×ÓÊ÷±ÈÓÒ×ÓÊ÷¸ß
+				if (height(pnode->lchild) > height(pnode->rchild))		//å·¦å­æ ‘æ¯”å³å­æ ‘é«˜
 				{
-					//Ê¹ÓÃ×ó×ÓÊ÷×î´ó½ÚµãÀ´´úÌæ±»É¾½Úµã£¬¶øÉ¾³ı¸Ã×î´ó½Úµã
-					UserInfo* ppre = maximum(pnode->lchild);		//×ó×ÓÊ÷×î´ó½Úµã
-					pnode->setID(ppre->getID());							//½«×î´ó½ÚµãµÄÖµ¸²¸Çµ±Ç°½áµã
-					pnode->lchild = remove(pnode->lchild, ppre->getID());	//µİ¹éµØÉ¾³ı×î´ó½Úµã
+					//ä½¿ç”¨å·¦å­æ ‘æœ€å¤§èŠ‚ç‚¹æ¥ä»£æ›¿è¢«åˆ èŠ‚ç‚¹ï¼Œè€Œåˆ é™¤è¯¥æœ€å¤§èŠ‚ç‚¹
+					UserInfo* ppre = maximum(pnode->lchild);		//å·¦å­æ ‘æœ€å¤§èŠ‚ç‚¹
+					pnode->setID(ppre->getID());							//å°†æœ€å¤§èŠ‚ç‚¹çš„å€¼è¦†ç›–å½“å‰ç»“ç‚¹
+					pnode->lchild = remove(pnode->lchild, ppre->getID());	//é€’å½’åœ°åˆ é™¤æœ€å¤§èŠ‚ç‚¹
 				}
 				else
 				{
-					//Ê¹ÓÃ×îĞ¡½ÚµãÀ´´úÌæ±»É¾½Úµã£¬¶øÉ¾³ı¸Ã×îĞ¡½Úµã
-					UserInfo* psuc = minimum(pnode->rchild);		//ÓÒ×ÓÊ÷µÄ×îĞ¡½Úµã
-					pnode->setID(psuc->getID());								//½«×îĞ¡½ÚµãÖµ¸²¸Çµ±Ç°½áµã
-					pnode->rchild = remove(pnode->rchild, psuc->getID());	//µİ¹éµØÉ¾³ı×îĞ¡½Úµã
+					//ä½¿ç”¨æœ€å°èŠ‚ç‚¹æ¥ä»£æ›¿è¢«åˆ èŠ‚ç‚¹ï¼Œè€Œåˆ é™¤è¯¥æœ€å°èŠ‚ç‚¹
+					UserInfo* psuc = minimum(pnode->rchild);		//å³å­æ ‘çš„æœ€å°èŠ‚ç‚¹
+					pnode->setID(psuc->getID());								//å°†æœ€å°èŠ‚ç‚¹å€¼è¦†ç›–å½“å‰ç»“ç‚¹
+					pnode->rchild = remove(pnode->rchild, psuc->getID());	//é€’å½’åœ°åˆ é™¤æœ€å°èŠ‚ç‚¹
 				}
 
 			}
@@ -98,21 +98,21 @@ UserInfo * AVLTree::remove(UserInfo *& pnode, string ID)
 			}
 
 		}
-		else if (ID > pnode->getID())		//ÒªÉ¾³ıµÄ½Úµã±Èµ±Ç°½Úµã´ó£¬ÔòÔÚÓÒ×ÓÊ÷½øĞĞÉ¾³ı
+		else if (ID > pnode->getID())		//è¦åˆ é™¤çš„èŠ‚ç‚¹æ¯”å½“å‰èŠ‚ç‚¹å¤§ï¼Œåˆ™åœ¨å³å­æ ‘è¿›è¡Œåˆ é™¤
 		{
 			pnode->rchild = remove(pnode->rchild, ID);
-			if (height(pnode->lchild) - height(pnode->rchild) == 2) //É¾³ıÓÒ×ÓÊ÷½Úµãµ¼ÖÂ²»Æ½ºâ:Ïàµ±ÓÚÇé¿ö¶ş»òÇé¿öËÄ
+			if (height(pnode->lchild) - height(pnode->rchild) == 2) //åˆ é™¤å³å­æ ‘èŠ‚ç‚¹å¯¼è‡´ä¸å¹³è¡¡:ç›¸å½“äºæƒ…å†µäºŒæˆ–æƒ…å†µå››
 			{
 				if (height(pnode->lchild->rchild) > height(pnode->lchild->lchild))
-					pnode = leftRightRotation(pnode);				//Ïàµ±ÓÚÇé¿öËÄ
+					pnode = leftRightRotation(pnode);				//ç›¸å½“äºæƒ…å†µå››
 				else
-					pnode = rightRotation(pnode);					//Ïàµ±ÓÚÇé¿ö¶ş
+					pnode = rightRotation(pnode);					//ç›¸å½“äºæƒ…å†µäºŒ
 			}
 		}
-		else if (ID < pnode->getID())		//ÒªÉ¾³ıµÄ½Úµã±Èµ±Ç°½ÚµãĞ¡£¬ÔòÔÚ×ó×ÓÊ÷½øĞĞÉ¾³ı
+		else if (ID < pnode->getID())		//è¦åˆ é™¤çš„èŠ‚ç‚¹æ¯”å½“å‰èŠ‚ç‚¹å°ï¼Œåˆ™åœ¨å·¦å­æ ‘è¿›è¡Œåˆ é™¤
 		{
 			pnode->lchild = remove(pnode->lchild, ID);
-			if (height(pnode->rchild) - height(pnode->lchild) == 2)  //É¾³ı×ó×ÓÊ÷½Úµãµ¼ÖÂ²»Æ½ºâ£ºÏàµ±ÓÚÇé¿öÈı»òÇé¿öÒ»
+			if (height(pnode->rchild) - height(pnode->lchild) == 2)  //åˆ é™¤å·¦å­æ ‘èŠ‚ç‚¹å¯¼è‡´ä¸å¹³è¡¡ï¼šç›¸å½“äºæƒ…å†µä¸‰æˆ–æƒ…å†µä¸€
 			{
 				if (height(pnode->rchild->lchild) > height(pnode->rchild->rchild))
 					pnode = rightLeftRotation(pnode);
@@ -218,7 +218,7 @@ int AVLTree::height(UserInfo* pnode)
 	{
 		return pnode->getHeight();
 	}
-	return 0;																//Èç¹ûÊÇ¿ÕÊ÷£¬¸ß¶ÈÎª0
+	return 0;																//å¦‚æœæ˜¯ç©ºæ ‘ï¼Œé«˜åº¦ä¸º0
 };
 
 int AVLTree::height()
@@ -226,39 +226,39 @@ int AVLTree::height()
 	return height(root);
 };
 
-//pnodeÎª×îĞ¡Ê§ºâ×ÓÊ÷µÄ¸ù½Úµã
-//·µ»ØĞı×ªºóµÄ¸ù½Úµã
-UserInfo* AVLTree::leftRotation(UserInfo* proot)	//×óĞı
+//pnodeä¸ºæœ€å°å¤±è¡¡å­æ ‘çš„æ ¹èŠ‚ç‚¹
+//è¿”å›æ—‹è½¬åçš„æ ¹èŠ‚ç‚¹
+UserInfo* AVLTree::leftRotation(UserInfo* proot)	//å·¦æ—‹
 {
 	UserInfo* prchild = proot->rchild;
 	proot->rchild = prchild->lchild;
 	prchild->lchild = proot;
 
-	proot->setHeight(max(height(proot->lchild), height(proot->rchild)) + 1);		//¸üĞÂ½ÚµãµÄ¸ß¶ÈÖµ
-	prchild->setHeight(max(height(prchild->lchild), height(prchild->rchild)) + 1);	//¸üĞÂ½ÚµãµÄ¸ß¶ÈÖµ
+	proot->setHeight(max(height(proot->lchild), height(proot->rchild)) + 1);		//æ›´æ–°èŠ‚ç‚¹çš„é«˜åº¦å€¼
+	prchild->setHeight(max(height(prchild->lchild), height(prchild->rchild)) + 1);	//æ›´æ–°èŠ‚ç‚¹çš„é«˜åº¦å€¼
 
 	return prchild;
 };
 
-UserInfo* AVLTree::rightRotation(UserInfo*proot)	//ÓÒĞı
+UserInfo* AVLTree::rightRotation(UserInfo*proot)	//å³æ—‹
 {
 	UserInfo* plchild = proot->lchild;
 	proot->lchild = plchild->rchild;
 	plchild->rchild = proot;
 
-	proot->setHeight(max(height(proot->lchild), height(proot->rchild)) + 1);     //¸üĞÂ½ÚµãµÄ¸ß¶ÈÖµ
-	plchild->setHeight(max(height(plchild->lchild), height(plchild->rchild)) + 1); //¸üĞÂ½ÚµãµÄ¸ß¶ÈÖµ
+	proot->setHeight(max(height(proot->lchild), height(proot->rchild)) + 1);     //æ›´æ–°èŠ‚ç‚¹çš„é«˜åº¦å€¼
+	plchild->setHeight(max(height(plchild->lchild), height(plchild->rchild)) + 1); //æ›´æ–°èŠ‚ç‚¹çš„é«˜åº¦å€¼
 
 	return plchild;
 };
 
-UserInfo* AVLTree::leftRightRotation(UserInfo* proot)	//ÏÈ×óºóÓÒ
+UserInfo* AVLTree::leftRightRotation(UserInfo* proot)	//å…ˆå·¦åå³
 {
 	proot->lchild = leftRotation(proot->lchild);
 	return rightRotation(proot);
 };
 
-UserInfo* AVLTree::rightLeftRotation(UserInfo* proot)	//ÏÈÓÒºó×ó
+UserInfo* AVLTree::rightLeftRotation(UserInfo* proot)	//å…ˆå³åå·¦
 {
 	proot->rchild = rightRotation(proot->rchild);
 	return leftRotation(proot);
@@ -273,7 +273,7 @@ void AVLTree::saveTreeToFile(string file)
 }
 
 
-/*ÒÔÏÂº¯Êıµ÷ÊÔ³ÌĞòÊ¹ÓÃ*/
+/*ä»¥ä¸‹å‡½æ•°è°ƒè¯•ç¨‹åºä½¿ç”¨*/
 // void AVLTree::preOrder()
 // {
 // 	preOrder(root);
@@ -329,7 +329,7 @@ void AVLTree::showTreeToFile(string file)
 	for (int i = 0; i < printTree.size(); i++)
 		printTree[i] = "";
 	ofstream fout(file);
-	fout << "Õâ¸öĞ¡ÃØÃÜ¾ÍÊÇÊ÷×´Õ¹Ê¾³öÏÖÓĞµÄÕË»§,µ±È»ÃÜÂë¾ÍÃ»ÓĞ¿©~" << endl;
+	fout << "è¿™ä¸ªå°ç§˜å¯†å°±æ˜¯æ ‘çŠ¶å±•ç¤ºå‡ºç°æœ‰çš„è´¦æˆ·,å½“ç„¶å¯†ç å°±æ²¡æœ‰å’¯~" << endl;
 	dotreeholl();
 	bulidTree(root, 0);
 	for (int i = 0; i < printTree.size(); i++)

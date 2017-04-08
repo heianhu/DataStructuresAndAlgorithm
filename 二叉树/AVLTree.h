@@ -6,21 +6,21 @@
 class AVLTree
 {
 private:
-	UserInfo *root;		//AVLÊ÷µÄ¸ù½Úµã
+	UserInfo *root;		//AVLæ ‘çš„æ ¹èŠ‚ç‚¹
 public:
 
 
-	void saveTreeToFile(string file);	//ÓÃÇ°Ğò±éÀúAVLÊ÷À´´¢´æÊ÷
+	void saveTreeToFile(string file);	//ç”¨å‰åºéå†AVLæ ‘æ¥å‚¨å­˜æ ‘
 	void showTreeToFile(string file);
-	void destory();		//Ïú»ÙAVLÊ÷
-	void insert(string ID, string password);	//²åÈëÖ¸¶¨ÖµµÄ½Úµã
-	void remove(string ID);	//ÒÆ³ıÖ¸¶¨ÖµµÄ½Úµã
-	UserInfo* search(string ID);	//Ö¸¶¨ÖµµÄ²éÕÒ
+	void destory();		//é”€æ¯AVLæ ‘
+	void insert(string ID, string password);	//æ’å…¥æŒ‡å®šå€¼çš„èŠ‚ç‚¹
+	void remove(string ID);	//ç§»é™¤æŒ‡å®šå€¼çš„èŠ‚ç‚¹
+	UserInfo* search(string ID);	//æŒ‡å®šå€¼çš„æŸ¥æ‰¾
 	bool password_istrue(string ID, string password);
 	void changePassword(string id, string password);
-	string minimum();		//·µ»ØAVLÖĞµÄ×îĞ¡Öµ
-	string maximum();		//·µ»ØAVLÖĞµÄ×î´óÖµ
-	int height();		//·µ»ØÊ÷µÄ¸ß¶È
+	string minimum();		//è¿”å›AVLä¸­çš„æœ€å°å€¼
+	string maximum();		//è¿”å›AVLä¸­çš„æœ€å¤§å€¼
+	int height();		//è¿”å›æ ‘çš„é«˜åº¦
 	AVLTree();
 	~AVLTree();
 private:
@@ -28,26 +28,26 @@ private:
 
 	void destory(UserInfo* & pnode);
 
-	int height(UserInfo* pnode);	//·µ»Øµ±Ç°Ê÷µÄ¸ß¶È
-//	int max(int a, int b);		//±È½Ïº¯Êı,Ã»ÓĞÊ¹ÓÃº¯Êı¿âÖĞº¯Êı
+	int height(UserInfo* pnode);	//è¿”å›å½“å‰æ ‘çš„é«˜åº¦
+//	int max(int a, int b);		//æ¯”è¾ƒå‡½æ•°,æ²¡æœ‰ä½¿ç”¨å‡½æ•°åº“ä¸­å‡½æ•°
 
-	UserInfo* insert(UserInfo* &pnode, string ID, string password);	//·µ»Ø²åÈëºóµÄ¸ù½Úµã
-	UserInfo* remove(UserInfo* & pnode, string ID); //É¾³ıAVLÊ÷ÖĞ½Úµãpdel£¬²¢·µ»Ø±»É¾³ıµÄ½Úµã
+	UserInfo* insert(UserInfo* &pnode, string ID, string password);	//è¿”å›æ’å…¥åçš„æ ¹èŠ‚ç‚¹
+	UserInfo* remove(UserInfo* & pnode, string ID); //åˆ é™¤AVLæ ‘ä¸­èŠ‚ç‚¹pdelï¼Œå¹¶è¿”å›è¢«åˆ é™¤çš„èŠ‚ç‚¹
 
-	UserInfo* minimum(UserInfo*pnode)const;		//·µ»Ø×îĞ¡½Úµã
-	UserInfo* maximum(UserInfo*pnode)const;		//·µ»Ø×î´ó½Úµã
+	UserInfo* minimum(UserInfo*pnode)const;		//è¿”å›æœ€å°èŠ‚ç‚¹
+	UserInfo* maximum(UserInfo*pnode)const;		//è¿”å›æœ€å¤§èŠ‚ç‚¹
 
 
-	UserInfo* search(UserInfo* pnode, string ID) const;	//²éÕÒÖ¸¶¨ÔªËØ
+	UserInfo* search(UserInfo* pnode, string ID) const;	//æŸ¥æ‰¾æŒ‡å®šå…ƒç´ 
 
-	UserInfo* leftRotation(UserInfo* pnode);		//×óĞı²Ù×÷
-	UserInfo* rightRotation(UserInfo* pnode);		//ÓÒĞı²Ù×÷
-	UserInfo* leftRightRotation(UserInfo* pnode);	//ÏÈ×óĞıºóÓÒĞı²Ù×÷
-	UserInfo* rightLeftRotation(UserInfo* pnode);	//ÏÈÓÒĞıºó×óĞı²Ù×÷
+	UserInfo* leftRotation(UserInfo* pnode);		//å·¦æ—‹æ“ä½œ
+	UserInfo* rightRotation(UserInfo* pnode);		//å³æ—‹æ“ä½œ
+	UserInfo* leftRightRotation(UserInfo* pnode);	//å…ˆå·¦æ—‹åå³æ—‹æ“ä½œ
+	UserInfo* rightLeftRotation(UserInfo* pnode);	//å…ˆå³æ—‹åå·¦æ—‹æ“ä½œ
 
-													/*ÒÔÏÂº¯Êıµ÷ÊÔ³ÌĞòÊ¹ÓÃ*/
+													/*ä»¥ä¸‹å‡½æ•°è°ƒè¯•ç¨‹åºä½¿ç”¨*/
 public:
-//	void preOrder();	//ÓÃÇ°Ğò±éÀúAVLÊ÷
+//	void preOrder();	//ç”¨å‰åºéå†AVLæ ‘
 	void printtheTree();
 	void dotreeholl();
 private:
