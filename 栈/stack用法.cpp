@@ -11,6 +11,6 @@ int main(void)
 		cout << s.top() << endl;
 		s.pop();
 	}
-	cout << "栈内的元素的个数为：" << s.size() << endl;
+	cout << "鏍堝唴鐨勫厓绱犵殑涓暟涓猴細" << s.size() << endl;
 	return 0;
 }
