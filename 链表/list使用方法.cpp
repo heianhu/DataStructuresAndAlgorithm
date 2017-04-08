@@ -1,7 +1,7 @@
 #include <iostream>   
 #include <list>   
 using namespace std;  
-//´ÓÇ°ÏòºóÏÔÊ¾list¶ÓÁĞµÄÈ«²¿ÔªËØ   
+//ä»å‰å‘åæ˜¾ç¤ºlisté˜Ÿåˆ—çš„å…¨éƒ¨å…ƒç´    
 void put_list(list<int> list, char *name)   
 {   
     list<int>::iterator plist;   
@@ -12,77 +12,77 @@ void put_list(list<int> list, char *name)
     cout<<endl;   
 }   
   
-//²âÊÔlistÈİÆ÷µÄ¹¦ÄÜ   
+//æµ‹è¯•listå®¹å™¨çš„åŠŸèƒ½   
 void main(void)   
 {   
-    //list1¶ÔÏó³õÊ¼Îª¿Õ   
+    //list1å¯¹è±¡åˆå§‹ä¸ºç©º   
     list<int> list1;   
-    //list2¶ÔÏó×î³õÓĞ10¸öÖµÎª6µÄÔªËØ   
+    //list2å¯¹è±¡æœ€åˆæœ‰10ä¸ªå€¼ä¸º6çš„å…ƒç´    
     list<int> list2(10,6);   
-    //list3¶ÔÏó×î³õÓĞ3¸öÖµÎª6µÄÔªËØ   
+    //list3å¯¹è±¡æœ€åˆæœ‰3ä¸ªå€¼ä¸º6çš„å…ƒç´    
     list<int> list3(list2.begin(),--list2.end());   
       
-    //ÉùÃ÷Ò»¸öÃûÎªiµÄË«Ïòµü´úÆ÷   
+    //å£°æ˜ä¸€ä¸ªåä¸ºiçš„åŒå‘è¿­ä»£å™¨   
     list<int>::iterator i;   
       
-    //´ÓÇ°ÏòºóÏÔÊ¾¸÷list¶ÔÏóµÄÔªËØ   
+    //ä»å‰å‘åæ˜¾ç¤ºå„listå¯¹è±¡çš„å…ƒç´    
     put_list(list1,"list1");   
     put_list(list2,"list2");   
     put_list(list3,"list3");   
       
-    //´Ólist1ĞòÁĞºóÃæÌí¼ÓÁ½¸öÔªËØ   
+    //ä»list1åºåˆ—åé¢æ·»åŠ ä¸¤ä¸ªå…ƒç´    
     list1.push_back(2);   
     list1.push_back(4);   
     cout<<"list1.push_back(2) and list1.push_back(4):"<<endl;   
     put_list(list1,"list1");   
       
-    //´Ólist1ĞòÁĞÇ°ÃæÌí¼ÓÁ½¸öÔªËØ   
+    //ä»list1åºåˆ—å‰é¢æ·»åŠ ä¸¤ä¸ªå…ƒç´    
     list1.push_front(5);   
     list1.push_front(7);   
     cout<<"list1.push_front(5) and list1.push_front(7):"<<endl;   
     put_list(list1,"list1");   
       
-    //ÔÚlist1ĞòÁĞÖĞ¼ä²åÈëÊı¾İ   
+    //åœ¨list1åºåˆ—ä¸­é—´æ’å…¥æ•°æ®   
     list1.insert(++list1.begin(),3,9);   
     cout<<"list1.insert(list1.begin()+1,3,9):"<<endl;   
     put_list(list1,"list1");   
       
-    //²âÊÔÒıÓÃÀàº¯Êı   
+    //æµ‹è¯•å¼•ç”¨ç±»å‡½æ•°   
     cout<<"list1.front()="<<list1.front()<<endl;   
     cout<<"list1.back()="<<list1.back()<<endl;   
       
-    //´Ólist1ĞòÁĞµÄÇ°ºó¸÷ÒÆÈ¥Ò»¸öÔªËØ   
+    //ä»list1åºåˆ—çš„å‰åå„ç§»å»ä¸€ä¸ªå…ƒç´    
     list1.pop_front();   
     list1.pop_back();   
     cout<<"list1.pop_front() and list1.pop_back():"<<endl;   
     put_list(list1,"list1");   
       
-    //Çå³ılist1ÖĞµÄµÚ2¸öÔªËØ   
+    //æ¸…é™¤list1ä¸­çš„ç¬¬2ä¸ªå…ƒç´    
     list1.erase(++list1.begin());   
     cout<<"list1.erase(++list1.begin()):"<<endl;   
     put_list(list1,"list1");   
       
-    //¶Ôlist2¸³Öµ²¢ÏÔÊ¾   
+    //å¯¹list2èµ‹å€¼å¹¶æ˜¾ç¤º   
     list2.assign(8,1);   
     cout<<"list2.assign(8,1):"<<endl;   
     put_list(list2,"list2");   
       
-    //ÏÔÊ¾ĞòÁĞµÄ×´Ì¬ĞÅÏ¢   
+    //æ˜¾ç¤ºåºåˆ—çš„çŠ¶æ€ä¿¡æ¯   
     cout<<"list1.max_size(): "<<list1.max_size()<<endl;   
     cout<<"list1.size(): "<<list1.size()<<endl;   
     cout<<"list1.empty(): "<<list1.empty()<<endl;   
       
-    //listĞòÁĞÈİÆ÷µÄÔËËã   
+    //liståºåˆ—å®¹å™¨çš„è¿ç®—   
     put_list(list1,"list1");   
     put_list(list3,"list3");   
     cout<<"list1>list3: "<<(list1>list3)<<endl;   
     cout<<"list1<list3: "<<(list1<list3)<<endl;   
       
-    //¶Ôlist1ÈİÆ÷ÅÅĞò   
+    //å¯¹list1å®¹å™¨æ’åº   
     list1.sort();   
     put_list(list1,"list1");   
       
-    //½áºÏ´¦Àí   
+    //ç»“åˆå¤„ç†   
     list1.splice(++list1.begin(), list3);   
     put_list(list1,"list1");   
     put_list(list3,"list3");   
