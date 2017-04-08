@@ -1,11 +1,11 @@
-//Ö±½ÓÌ×ÓÃÒÔÇ°Ñ§Ï°µÄÄ£°æ
+//ç›´æ¥å¥—ç”¨ä»¥å‰å­¦ä¹ çš„æ¨¡ç‰ˆ
 #include<iostream>  
 using namespace std;  
   
 int a[11][11];  
 bool visited[11];  
   
-void store_graph()  //ÁÚ½Ó¾ØÕó´æ´¢Í¼  
+void store_graph()  //é‚»æ¥çŸ©é˜µå­˜å‚¨å›¾  
 {  
     int i,j;  
   
@@ -14,35 +14,35 @@ void store_graph()  //ÁÚ½Ó¾ØÕó´æ´¢Í¼
             cin>>a[i][j];  
 }  
   
-void dfs_graph()    //Éî¶È±éÀúÍ¼  
+void dfs_graph()    //æ·±åº¦éå†å›¾  
 {  
     void dfs(int v);  
   
     memset(visited,false,sizeof(visited));  
   
-    for(int i=1;i<=10;i++)  //±éÀúÃ¿¸ö¶¥µãÊÇÎªÁË·ÀÖ¹Í¼²»Á¬Í¨Ê±ÎŞ·¨·ÃÎÊÃ¿¸ö¶¥µã  
+    for(int i=1;i<=10;i++)  //éå†æ¯ä¸ªé¡¶ç‚¹æ˜¯ä¸ºäº†é˜²æ­¢å›¾ä¸è¿é€šæ—¶æ— æ³•è®¿é—®æ¯ä¸ªé¡¶ç‚¹  
         if(visited[i]==false)  
             dfs(i);  
 }  
   
-void dfs(int v)  //Éî¶È±éÀú¶¥µã  
+void dfs(int v)  //æ·±åº¦éå†é¡¶ç‚¹  
 {  
     int Adj(int x);  
   
-    cout<<v<<" ";  //·ÃÎÊ¶¥µãv  
+    cout<<v<<" ";  //è®¿é—®é¡¶ç‚¹v  
     visited[v]=true;  
   
     int adj=Adj(v);  
     while(adj!=0)  
     {  
         if(visited[adj]==false)     
-            dfs(adj);      //µİ¹éµ÷ÓÃÊÇÊµÏÖÉî¶È±éÀúµÄ¹Ø¼üËùÔÚ  
+            dfs(adj);      //é€’å½’è°ƒç”¨æ˜¯å®ç°æ·±åº¦éå†çš„å…³é”®æ‰€åœ¨  
   
         adj=Adj(v);  
     }  
 }  
   
-int Adj(int x)   //ÇóÁÚ½Óµã  
+int Adj(int x)   //æ±‚é‚»æ¥ç‚¹  
 {  
     for(int i=1;i<=10;i++)  
         if(a[x][i]==1 && visited[i]==false)  
@@ -53,10 +53,10 @@ int Adj(int x)   //ÇóÁÚ½Óµã
   
 int main()  
 {  
-    cout<<"³õÊ¼»¯Í¼:"<<endl;  
+    cout<<"åˆå§‹åŒ–å›¾:"<<endl;  
     store_graph();  
   
-    cout<<"dfs±éÀú½á¹û:"<<endl;  
+    cout<<"dfséå†ç»“æœ:"<<endl;  
     dfs_graph();  
   
     return 0;  

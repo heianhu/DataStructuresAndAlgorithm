@@ -34,10 +34,10 @@ void bfs(int v)
 	visited[v] = true;
 	myqueue.push(v);
 
-	while (!myqueue.empty())    //¶ÓÁĞ·Ç¿Õ±íÊ¾»¹ÓĞ¶¥µãÎ´±éÀúµ½  
+	while (!myqueue.empty())    //é˜Ÿåˆ—éç©ºè¡¨ç¤ºè¿˜æœ‰é¡¶ç‚¹æœªéå†åˆ°  
 	{
-		temp = myqueue.front();  //»ñµÃ¶ÓÁĞÍ·ÔªËØ  
-		myqueue.pop();         //Í·ÔªËØ³ö¶Ô  
+		temp = myqueue.front();  //è·å¾—é˜Ÿåˆ—å¤´å…ƒç´   
+		myqueue.pop();         //å¤´å…ƒç´ å‡ºå¯¹  
 
 		adj = Adj(temp);
 		while (adj != 0)
@@ -46,7 +46,7 @@ void bfs(int v)
 			{
 				cout << adj << " ";
 				visited[adj] = true;
-				myqueue.push(adj);   //½ø¶Ô  
+				myqueue.push(adj);   //è¿›å¯¹  
 			}
 
 			adj = Adj(temp);
@@ -65,10 +65,10 @@ int Adj(int x)
 
 int main()
 {
-	cout << "³õÊ¼»¯Í¼:" << endl;
+	cout << "åˆå§‹åŒ–å›¾:" << endl;
 	store_graph();
 
-	cout << "bfs±éÀú½á¹û:" << endl;
+	cout << "bfséå†ç»“æœ:" << endl;
 	bfs_graph();
 
 	return 0;
