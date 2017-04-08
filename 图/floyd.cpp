@@ -5,21 +5,21 @@ int main()
 {
 	int e[10][10], k, i, j, n, m, t1, t2, t3;
 	cin >> n >> m;	
-	for (i = 1; i <= n; i++)	//³õÊ¼»¯
+	for (i = 1; i <= n; i++)	//åˆå§‹åŒ–
 		for (j = 1; j <= n; j++)
 			if (i == j) e[i][j] = 0;
 			else e[i][j] = inf;
-	for (i = 1; i <= m; i++)	//¶ÁÈë±ß
+	for (i = 1; i <= m; i++)	//è¯»å…¥è¾¹
 	{
 		cin >> t1 >> t2 >> t3;
 		e[t1][t2] = t3;
 	}			
-	for (k = 1; k <= n; k++)	//Floyd-WarshallËã·¨ºËÐÄÓï¾ä
+	for (k = 1; k <= n; k++)	//Floyd-Warshallç®—æ³•æ ¸å¿ƒè¯­å¥
 		for (i = 1; i <= n; i++)
 			for (j = 1; j <= n; j++)
 				if (e[i][j] > e[i][k] + e[k][j])
 					e[i][j] = e[i][k] + e[k][j];
-	for (i = 1; i <= n; i++)	//Êä³ö×îÖÕµÄ½á¹û
+	for (i = 1; i <= n; i++)	//è¾“å‡ºæœ€ç»ˆçš„ç»“æžœ
 	{
 		for (j = 1; j <= n; j++)
 		{
