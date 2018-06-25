@@ -10,14 +10,11 @@ from Simple_kNN import classify0
 
 def img2vector(filename):
     """
-    Desc：
-        将图像数据转换为向量
-    Args：
-        filename -- 图片文件 因为我们的输入数据的图片格式是 32 * 32的
-    Returns:
-        returnVect -- 图片文件处理完成后的一维矩阵
+    将图像数据转换为向量
     该函数将图像转换为向量：该函数创建 1 * 1024 的NumPy数组，然后打开给定的文件，
     循环读出文件的前32行，并将每行的头32个字符值存储在NumPy数组中，最后返回数组。
+    :param filename: 图片文件 因为我们的输入数据的图片格式是 32 * 32的
+    :return: 图片文件处理完成后的一维矩阵
     """
     returnVect = numpy.zeros((1, 1024))
     fr = open(filename, 'r')
@@ -30,12 +27,8 @@ def img2vector(filename):
 
 def handwritingClassTest():
     """
-    Desc:
-        手写数字识别分类器，并将分类错误数和分类错误率打印出来
-    Args:
-        None
-    Returns:
-        None
+    手写数字识别分类器，并将分类错误数和分类错误率打印出来
+    :return:
     """
     # 1. 导入数据
     hwLabels = []
