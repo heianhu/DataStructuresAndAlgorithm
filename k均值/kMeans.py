@@ -203,7 +203,7 @@ def clusterClubs(fileName, imgName, numClust=5):
     datMat = mat(datList)
     # 调用biKmeans并使用distSLC函数作为聚类中使用的距离计算方式
     myCentroids, clustAssing = biKmeans(datMat, numClust, distMeas=distSLC)
-    # 创建一幅图和一个举行,使用该矩形来决定绘制图的哪一部分
+    # 创建一幅图和一个矩形,使用该矩形来决定绘制图的哪一部分
     fig = plt.figure()
     rect = [0.1, 0.1, 0.8, 0.8]
     # 构建一个标记形状的列表用于绘制散点图
