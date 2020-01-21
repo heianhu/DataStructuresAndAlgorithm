@@ -67,8 +67,8 @@ class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
         if not root:
             return True
-        if root.val is None:
-            return True
+        # if root.val is None:
+        #     return True
         self.isValidBST(root.left)
         self.check_list.append(root.val)
         self.isValidBST(root.right)
