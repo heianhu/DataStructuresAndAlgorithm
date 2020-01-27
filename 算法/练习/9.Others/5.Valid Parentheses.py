@@ -33,4 +33,34 @@ Output: true
 
 
 class Solution:
+    @staticmethod
+    def mapping(s: str) -> str:
+        return {
+            ')': '(',
+            ']': '[',
+            '}': '{'
+        }.get(s, None)
+
     def isValid(self, s: str) -> bool:
+        result = list()
+        for i in s:
+            if not result:
+                result.append(i)
+            else:
+                if self.mapping(i) != result[-1]:
+                    result.append(i)
+                else:
+                    result.pop(-1)
+        if result:
+            return False
+        else:
+            return True
+
+
+if __name__ == '__main__':
+    a = Solution()
+    print(a.isValid("()"))
+    print(a.isValid("()[]{}"))
+    print(a.isValid("(]"))
+    print(a.isValid("([)]"))
+    print(a.isValid("{[]}"))

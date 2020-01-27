@@ -36,3 +36,18 @@ If this function is called many times, how would you optimize it?
 
 class Solution:
     def hammingWeight(self, n: int) -> int:
+        result = 0
+        while n != 0 and n != -1:
+            if n % 2:
+                result += 1
+            n >>= 1
+        if n == -1:
+            result = 32 - result
+        return result
+
+
+if __name__ == '__main__':
+    a = Solution()
+    # print(a.hammingWeight(11))
+    # print(a.hammingWeight(128))
+    print(a.hammingWeight(-5))

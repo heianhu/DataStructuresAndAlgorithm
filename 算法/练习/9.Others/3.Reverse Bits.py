@@ -31,3 +31,14 @@ If this function is called many times, how would you optimize it?
 
 class Solution:
     def reverseBits(self, n: int) -> int:
+        result = 0
+        for _ in range(32):
+            result <<= 1
+            result |= (1 & n)
+            n >>= 1
+        return result
+
+
+if __name__ == '__main__':
+    a = Solution()
+    print(a.reverseBits(43261596))
