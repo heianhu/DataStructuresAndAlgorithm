@@ -58,14 +58,23 @@ class Solution:
         }
 
     def romanToInt(self, s: str) -> int:
-        for index in range(1, len(s)):
-            if self.roman_dict[s[index - 1]] >= s[]
+        result = 0
+        if s:
+            result += self.roman_dict.get(s[-1], 0)
+        for index in range(len(s)-2, -1, -1):
+            if self.roman_dict[s[index + 1]] <= self.roman_dict[s[index]]:
+                is_add = 1
+            else:
+                is_add = -1
+            result += (is_add * self.roman_dict[s[index]])
+
+        return result
 
 
 if __name__ == '__main__':
     a = Solution()
-    print(a.romanToInt("III"))
-    print(a.romanToInt("IV"))
-    print(a.romanToInt("IX"))
-    print(a.romanToInt("LVIII"))
-    print(a.romanToInt("MCMXCIV"))
+    # print(a.romanToInt("I"))
+    print(a.romanToInt(""))
+    # print(a.romanToInt("IX"))
+    # print(a.romanToInt("LVIII"))
+    # print(a.romanToInt("MCMXCIV"))
